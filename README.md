@@ -16,7 +16,7 @@ $ brew install packer
 Usage
 =====
 
-To build e.g. the [CentOS](http://www.centos.org/) 6.4 template with [VirtualBox](https://www.virtualbox.org/) (which will produce a [Vagrant](http://www.vagrantup.com/) box):
+To build e.g. the [CentOS](http://www.centos.org/) 6 template with [VirtualBox](https://www.virtualbox.org/) (which will produce a [Vagrant](http://www.vagrantup.com/) box):
 
 ```
 $ packer build -only=virtualbox template.json
