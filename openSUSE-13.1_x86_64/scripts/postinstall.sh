@@ -8,8 +8,8 @@ date > /etc/vagrant_box_build_time
 rm -f /etc/zypp/locks
 
 # install required packages
-packages=( gcc make kernel-devel vim )
-zypper --non-interactive install --no-recommends --force-resolution ${packages[@]}
+#packages=( gcc make kernel-devel vim )
+#zypper --non-interactive install --no-recommends --force-resolution ${packages[@]}
 
 # install vagrant key
 mkdir -pm 700 /home/vagrant/.ssh
@@ -19,15 +19,30 @@ chown -R vagrant: /home/vagrant/.ssh
 
 # set vagrant sudo
 printf "%b" "
-# added by veewee/postinstall.sh
+# added by packer postinstall.sh
 vagrant ALL=(ALL) NOPASSWD: ALL
 " >> /etc/sudoers
 
 # speed-up remote logins
 printf "%b" "
-# added by veewee/postinstall.sh
+# added by packer postinstall.sh
 UseDNS no
 " >> /etc/ssh/sshd_config
 
 # disable gem docs
 echo "gem: --no-ri --no-rdoc" >/etc/gemrc
+
+# backlist i2c_piix4 - VirtualBox has no smbus
+echo "blacklist i2c_piix4" > /etc/modprobe.d/100-blacklist-i2c_piix4.conf
+
+# put shutdown command in path
+ln -s /sbin/shutdown /usr/bin/shutdown
+
+# ntp servers
+printf "%b" "
+# added by packer postinstall.sh
+0.de.pool.ntp.org
+1.de.pool.ntp.org
+2.de.pool.ntp.org
+3.de.pool.ntp.org
+" >> /etc/ntp.conf

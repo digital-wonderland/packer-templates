@@ -79,7 +79,26 @@
     <image/>
     <instsource>http://download.opensuse.org/distribution/12.3/repo/oss/</instsource>
     <kernel>kernel-default</kernel>
+    <patterns config:type="list">
+      <pattern>base</pattern>
+    </patterns>
     <packages config:type="list">
+      <package>kernel-default-devel</package>
+      <package>gcc</package>
+      <!-- <package>glibc-locale</package> -->
+      <package>grub2</package>
+      <package>make</package>
+      <package>iputils</package>
+      <package>ntp</package>
+      <package>openssh</package>
+      <package>procps</package>
+      <package>sudo</package>
+      <package>vim-data</package>
+      <package>vim-enhanced</package>
+      <package>yast2-hardware-detection</package>
+      <package>yast2-runlevel</package>
+      <package>zypper</package>
+<!--
       <package>autoyast2-installation</package>
       <package>autoyast2</package>
       <package>bundle-lang-common-en</package>
@@ -95,8 +114,21 @@
       <package>yast2-theme-openSUSE</package>
       <package>yast2-users</package>
       <package>zypper</package>
+-->
     </packages>
     <remove-packages config:type="list">
+      <package>patterns-openSUSE-base</package>
+      <package>bundle-lang-gnome-ar</package>
+      <package>bundle-lang-gnome-en</package>
+      <package>bundle-lang-gnome-extras-en</package>
+      <package>gnome-icon-theme</package>
+      <package>gnome-icon-theme-extras</package>
+      <package>gnome-icon-theme-symbolic</package>
+      <package>gtk3-branding-openSUSE</package>
+      <package>virtualbox-guest-kmp-default</package>
+      <package>yast2-branding-openSUSE</package>
+      <package>yast2-theme-openSUSE</package>
+<!--
       <package>bash-doc</package>
       <package>bundle-lang-gnome-en</package>
       <package>bundle-lang-gnome-extras-en</package>
@@ -121,6 +153,7 @@
       <package>shim</package>
       <package>vim-data</package>
       <package>wallpaper-branding-openSUSE</package>
+-->
     </remove-packages>
   </software>
 
@@ -128,8 +161,12 @@
     <default>3</default>
     <services config:type="list">
       <service>
+        <service_name>ntp</service_name>
+        <service_status>enable</service_status>
+      </service>
+      <service>
         <service_name>sshd</service_name>
-        <service_start>enable</service_start>
+        <service_status>enable</service_status>
       </service>
     </services>
   </runlevel>
