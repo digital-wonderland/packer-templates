@@ -1,16 +1,10 @@
-if
-  test -f .vbox_version
-then
-  mount -o loop VBoxGuestAdditions_$(cat .vbox_version).iso /mnt
-  yes|sh /mnt/VBoxLinuxAdditions.run
-  umount /mnt
+# Installing dependencies
+zypper --non-interactive install kernel-devel gcc make
+# Installing the virtualbox guest additions
+VBOX_VERSION=$(cat /home/vagrant/.vbox_version)
+cd /tmp
+mount -o loop /home/vagrant/VBoxGuestAdditions_$VBOX_VERSION.iso /mnt
+sh /mnt/VBoxLinuxAdditions.run
+umount /mnt
+rm -rf /home/vagrant/VBoxGuestAdditions_*.iso
 
-  # Start the newly build driver
-  /etc/init.d/vboxadd start
-
-  # Make a temporary mount point
-  mkdir /tmp/veewee-validation
-
-  # Test mount the veewee-validation
-  mount -t vboxsf veewee-validation /tmp/veewee-validation
-fi

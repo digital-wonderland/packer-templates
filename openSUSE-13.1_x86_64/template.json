@@ -34,7 +34,7 @@
       "iso_checksum": "0ef3c2f301b05f52e9c98cff3f799744",
       "iso_checksum_type": "md5",
       "iso_url": "http://download.opensuse.org/distribution/12.3/iso/openSUSE-12.3-NET-x86_64.iso",
-      "ssh_username": "root",
+      "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_wait_timeout": "10000s",
@@ -83,6 +83,13 @@
         "numvcpus": "2",
         "cpuid.coresPerSocket": "1"
       }
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "openSUSE-12.3-x86_64-{{ .Provider }}.box",
+      "only": ["virtualbox"]
     }
   ]
 }

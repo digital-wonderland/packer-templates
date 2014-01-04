@@ -52,43 +52,8 @@
   </bootloader>
 
   <networking>
-    <dhcp_options>
-      <dhclient_client_id/>
-      <dhclient_hostname_option>AUTO</dhclient_hostname_option>
-    </dhcp_options>
-    <dns>
-      <dhcp_hostname config:type="boolean">false</dhcp_hostname>
-      <domain>site</domain>
-      <hostname>linux-opensuse-123-64</hostname>
-      <resolv_conf_policy>auto</resolv_conf_policy>
-      <write_hostname config:type="boolean">true</write_hostname>
-    </dns>
-    <interfaces config:type="list">
-      <interface>
-        <bootproto>dhcp</bootproto>
-        <device>eth0</device>
-        <name>82540EM Gigabit Ethernet Controller</name>
-        <startmode>auto</startmode>
-      </interface>
-      <interface>
-        <broadcast>127.255.255.255</broadcast>
-        <device>lo</device>
-        <firewall>no</firewall>
-        <ipaddr>127.0.0.1</ipaddr>
-        <netmask>255.0.0.0</netmask>
-        <network>127.0.0.0</network>
-        <prefixlen>8</prefixlen>
-        <startmode>auto</startmode>
-        <usercontrol>no</usercontrol>
-      </interface>
-    </interfaces>
     <ipv6 config:type="boolean">false</ipv6>
-    <keep_install_network config:type="boolean">false</keep_install_network>
-    <managed config:type="boolean">false</managed>
-    <net-udev config:type="list"/>
-    <routing>
-      <ip_forward config:type="boolean">false</ip_forward>
-    </routing>
+    <keep_install_network config:type="boolean">true</keep_install_network>
   </networking>
   <firewall>
     <enable_firewall config:type="boolean">false</enable_firewall>

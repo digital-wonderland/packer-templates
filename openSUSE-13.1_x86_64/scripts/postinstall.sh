@@ -8,7 +8,7 @@ date > /etc/vagrant_box_build_time
 rm -f /etc/zypp/locks
 
 # install required packages
-packages=( gcc-c++ less make bison libtool ruby-devel vim )
+packages=( gcc make kernel-devel vim )
 zypper --non-interactive install --no-recommends --force-resolution ${packages[@]}
 
 # install vagrant key
@@ -31,7 +31,3 @@ UseDNS no
 
 # disable gem docs
 echo "gem: --no-ri --no-rdoc" >/etc/gemrc
-
-# install chef and puppet
-gem install chef
-gem install puppet
