@@ -41,8 +41,8 @@ ln -s /sbin/shutdown /usr/bin/shutdown
 # ntp servers
 printf "%b" "
 # added by packer postinstall.sh
-0.de.pool.ntp.org
-1.de.pool.ntp.org
-2.de.pool.ntp.org
-3.de.pool.ntp.org
+server 0.de.pool.ntp.org
+server 1.de.pool.ntp.org
+server 2.de.pool.ntp.org
+server 3.de.pool.ntp.org
 " >> /etc/ntp.conf
