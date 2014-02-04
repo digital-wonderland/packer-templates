@@ -46,3 +46,4 @@ server 1.de.pool.ntp.org
 server 2.de.pool.ntp.org
 server 3.de.pool.ntp.org
 " >> /etc/ntp.conf
+

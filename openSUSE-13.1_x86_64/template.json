@@ -2,16 +2,23 @@
   "provisioners": [
     {
       "type": "shell",
+      "inline": [
+        "sleep 60"
+      ]
+    },
+    {
+      "type": "shell",
       "scripts": [
         "scripts/postinstall.sh",
         "scripts/virtualbox.sh",
         "scripts/zerodisk.sh"
       ],
+      "pause_before": "120s",
       "override": {
-        "virtualbox": {
+        "virtualbox-iso": {
           "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'"
         },
-        "vmware": {
+        "vmware-iso": {
           "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'"
         }
       }
@@ -19,11 +26,11 @@
   ],
   "builders": [
     {
-      "type": "virtualbox",
+      "type": "virtualbox-iso",
       "boot_command": [
         "<esc><enter><wait>",
-        "linux netdevice=eth0 netsetup=dhcp<wait>",
-        " install=http://download.opensuse.org/distribution/12.3/repo/oss/ insecure=1<wait>",
+        "linux netdevice=enp0s3 netsetup=dhcp<wait>",
+        " install=http://download.opensuse.org/distribution/13.1/repo/oss/ insecure=1<wait>",
         " lang=en_US autoyast=http://{{ .HTTPIP }}:{{ .HTTPPort }}/autoinst.xml<wait>",
         " textmode=1<wait>",
         "<enter><wait>"
@@ -32,9 +39,9 @@
       "disk_size": 20480,
       "guest_os_type": "OpenSUSE_64",
       "http_directory": "http",
-      "iso_checksum": "0ef3c2f301b05f52e9c98cff3f799744",
+      "iso_checksum": "6c0d656895cbd92f34de61d98ca364ea",
       "iso_checksum_type": "md5",
-      "iso_url": "http://download.opensuse.org/distribution/12.3/iso/openSUSE-12.3-NET-x86_64.iso",
+      "iso_url": "http://download.opensuse.org/distribution/13.1/iso/openSUSE-13.1-NET-x86_64.iso",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
@@ -58,11 +65,11 @@
       ]
     },
     {
-      "type": "vmware",
+      "type": "vmware-iso",
       "boot_command": [
         "<esc><enter><wait>",
         "linux netdevice=eth0 netsetup=dhcp<wait>",
-        " install=http://download.opensuse.org/distribution/12.3/repo/oss/ insecure=1<wait>",
+        " install=http://download.opensuse.org/distribution/13.1/repo/oss/ insecure=1<wait>",
         " lang=en_US autoyast=http://{{ .HTTPIP }}:{{ .HTTPPort }}/autoinst.xml<wait>",
         " textmode=1<wait>",
         "<enter><wait>"
@@ -71,9 +78,9 @@
       "disk_size": 20480,
       "guest_os_type": "opensuse-64",
       "http_directory": "http",
-      "iso_checksum": "0ef3c2f301b05f52e9c98cff3f799744",
+      "iso_checksum": "6c0d656895cbd92f34de61d98ca364ea",
       "iso_checksum_type": "md5",
-      "iso_url": "http://download.opensuse.org/distribution/12.3/iso/openSUSE-12.3-NET-x86_64.iso",
+      "iso_url": "http://download.opensuse.org/distribution/13.1/iso/openSUSE-13.1-NET-x86_64.iso",
       "ssh_username": "root",
       "ssh_password": "vagrant",
       "ssh_port": 22,
@@ -89,8 +96,8 @@
   "post-processors": [
     {
       "type": "vagrant",
-      "output": "openSUSE-12.3-x86_64-{{ .Provider }}.box",
-      "only": ["virtualbox"]
+      "output": "openSUSE-13.1-x86_64-{{ .Provider }}.box",
+      "only": ["virtualbox-iso"]
     }
   ]
 }
