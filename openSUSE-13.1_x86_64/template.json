@@ -2,18 +2,11 @@
   "provisioners": [
     {
       "type": "shell",
-      "inline": [
-        "sleep 60"
-      ]
-    },
-    {
-      "type": "shell",
       "scripts": [
         "scripts/postinstall.sh",
         "scripts/virtualbox.sh",
         "scripts/zerodisk.sh"
       ],
-      "pause_before": "120s",
       "override": {
         "virtualbox-iso": {
           "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'"
