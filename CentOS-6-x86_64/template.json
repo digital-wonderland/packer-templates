@@ -46,29 +46,6 @@
           "3"
         ]
       ]
-    },
-    {
-      "type": "vmware-iso",
-      "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
-      ],
-      "boot_wait": "10s",
-      "disk_size": 20480,
-      "guest_os_type": "RedHat_64",
-      "http_directory": "http",
-      "iso_checksum": "939fd1d87c11ffe7795324438b85adfb",
-      "iso_checksum_type": "md5",
-      "iso_url": "http://ftp.hosteurope.de/mirror/centos.org/6.5/isos/x86_64/CentOS-6.5-x86_64-netinstall.iso",
-      "ssh_username": "vagrant",
-      "ssh_password": "vagrant",
-      "ssh_port": 22,
-      "ssh_wait_timeout": "10000s",
-      "shutdown_command": "echo '/sbin/halt -h -p' > shutdown.sh; echo 'vagrant'|sudo -S sh 'shutdown.sh'",
-      "vmx_data": {
-        "memsize": "3072",
-        "numvcpus": "3",
-        "cpuid.coresPerSocket": "1"
-      }
     }
   ],
   "post-processors": [
