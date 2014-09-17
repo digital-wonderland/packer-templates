@@ -109,6 +109,11 @@
                 <device>enp0s3</device>
                 <startmode>onboot</startmode>
             </interface>
+            <interface>
+                <bootproto>dhcp</bootproto>
+                <device>ens33</device>
+                <startmode>onboot</startmode>
+            </interface>
         </interfaces>
     </networking>
 

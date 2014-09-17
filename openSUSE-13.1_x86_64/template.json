@@ -61,7 +61,7 @@
       "type": "vmware-iso",
       "boot_command": [
         "<esc><enter><wait>",
-        "linux netdevice=eth0 netsetup=dhcp<wait>",
+        "linux netdevice=ens33 netsetup=dhcp<wait>",
         " install=http://download.opensuse.org/distribution/13.1/repo/oss/ insecure=1<wait>",
         " lang=en_US autoyast=http://{{ .HTTPIP }}:{{ .HTTPPort }}/autoinst.xml<wait>",
         " textmode=1<wait>",
