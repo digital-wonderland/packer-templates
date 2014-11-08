@@ -157,8 +157,11 @@
 	    <package>vim</package>
         </packages>
         <remove-packages config:type="list">
+            <package>desktop-translations</package>
+            <package>kernel-firmware</package>
             <package>virtualbox-guest-kmp-default</package>
             <package>virtualbox-guest-tools</package>
+            <package>yast2-branding-openSUSE</package>
         </remove-packages>
     </software>
 
